@@ -15,7 +15,7 @@ final class ExampleView: UIView {
     private let subtitleLabel = UILabel(frame: .zero)
     private let imageView = UIImageView(frame: .zero)
 
-    lazy var body = {
+    private lazy var body = {
         HStackView(spacing: theme.paddings.normal) {
             VStackView {
                 imageView.modify {
