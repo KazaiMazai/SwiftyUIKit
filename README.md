@@ -2,7 +2,7 @@
 
 SwiftyUIKit is a featherweight lib for building layout in a clean and declarative way.
 
-It allows to build autolayout-powered UIView layout almost the same way as it's done in SwiftUI 
+It allows to build autolayout-powered UIView layout in SwiftUI-style 
 while using the exact same UIKit API for views configuration.
 
 
