@@ -53,9 +53,5 @@ final class ExampleView: UIView {
         super.init(frame: frame)
         add(body: body)
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 ```
