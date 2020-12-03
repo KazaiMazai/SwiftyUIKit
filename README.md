@@ -20,7 +20,6 @@ final class ExampleView: UIView {
             VStackView {
                 imageView.modify {
                     $0.contentMode = .scaleAspectFill
-                    $0.clipsToBounds = true
                     $0.widthAnchor
                         .constraint(equalTo: $0.heightAnchor, multiplier: 1.0)
                         .isActive = true
