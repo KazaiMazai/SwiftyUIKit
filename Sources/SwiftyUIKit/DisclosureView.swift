@@ -16,7 +16,6 @@ public extension DisclosureView {
 }
 
 public final class DisclosureView: UIView {
-    private static let veryLargeContraintValue: CGFloat = 9999
     private let isExpanded: () -> Bool
     private var conditionalContraints: [NSLayoutConstraint] = []
 
@@ -32,18 +31,18 @@ public final class DisclosureView: UIView {
         case .horizontal:
             conditionalContraints = [
                 contentView.widthAnchor.constraint(
-                    lessThanOrEqualToConstant: Self.veryLargeContraintValue)
+                    lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         case .vertical:
             conditionalContraints = [contentView.heightAnchor.constraint(
-                lessThanOrEqualToConstant: Self.veryLargeContraintValue)
+                lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         case .all:
             conditionalContraints = [
                 contentView.heightAnchor.constraint(
-                    lessThanOrEqualToConstant: Self.veryLargeContraintValue),
+                    lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant),
                 contentView.widthAnchor.constraint(
-                    lessThanOrEqualToConstant: Self.veryLargeContraintValue)
+                    lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         }
 
@@ -51,7 +50,7 @@ public final class DisclosureView: UIView {
         add(body: contentView)
 
         conditionalContraints.forEach {
-            $0.constant = isExpanded() ? Self.veryLargeContraintValue : 0
+            $0.constant = isExpanded() ? NSLayoutConstraint.defaultLargeConstant : 0
             $0.priority = .defaultHigh
             $0.isActive = true
         }
@@ -62,10 +61,14 @@ public final class DisclosureView: UIView {
     public override func updateConstraints() {
         super.updateConstraints()
         print("updateConstraints")
-        conditionalContraints.forEach { $0.constant = isExpanded() ? Self.veryLargeContraintValue : 0 }
+        conditionalContraints.forEach { $0.constant = isExpanded() ? NSLayoutConstraint.defaultLargeConstant : 0 }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension NSLayoutConstraint {
+    static let defaultLargeConstant: CGFloat = 9999
 }
