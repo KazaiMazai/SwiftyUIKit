@@ -29,7 +29,7 @@ public extension UIView {
 }
 
 private final class PaddingViewDecorator: UIView {
-    convenience public init(decorated: UIView, withPaddingConstant constant: CGFloat = 8) {
+    convenience init(decorated: UIView, withPaddingConstant constant: CGFloat = 8) {
         self.init(decorated: decorated,
                   topConstant: constant,
                   leftConstant: constant,
@@ -37,11 +37,11 @@ private final class PaddingViewDecorator: UIView {
                   bottomConstant: constant)
     }
 
-    public init(decorated: UIView,
-                topConstant: CGFloat = 8,
-                leftConstant: CGFloat = 8,
-                rightConstant: CGFloat = 8,
-                bottomConstant: CGFloat = 8) {
+    init(decorated: UIView,
+         topConstant: CGFloat = 8,
+         leftConstant: CGFloat = 8,
+         rightConstant: CGFloat = 8,
+         bottomConstant: CGFloat = 8) {
         super.init(frame: .zero)
 
         addSubview(decorated)
