@@ -22,26 +22,53 @@ public final class VStackView: UIView {
         content
             .enumerated()
             .forEach { (index, view) in
+                let isFirst = index == 0
+                let isLast = index == content.count - 1
+                let previousView: UIView? = isFirst ? nil : content[index - 1]
+
                 view.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(view)
 
-                view.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-                let rightConstraint = view.rightAnchor.constraint(equalTo: rightAnchor)
-                rightConstraint.priority = .defaultHigh
-                rightConstraint.isActive = true
+                view.leftAnchor
+                    .constraint(equalTo: leftAnchor)
+                    .modify {
+                        $0.priority = .defaultHigh
+                        $0.isActive = true
+                    }
 
-                if index == 0 {
-                    view.topAnchor.constraint(equalTo: topAnchor).isActive = true
-                } else {
-                    let prevView = content[index - 1]
-                    view.topAnchor.constraint(equalTo: prevView.bottomAnchor,
-                                              constant: spacing).isActive = true
+                view.rightAnchor
+                    .constraint(equalTo: rightAnchor)
+                    .modify {
+                        $0.priority = .defaultHigh
+                        $0.isActive = true
+                    }
+
+                if isFirst {
+                    view.topAnchor
+                        .constraint(equalTo: topAnchor)
+                        .modify {
+                            $0.priority =  .defaultHigh
+                            $0.isActive = true
+                        }
                 }
 
-                if index == content.count - 1 {
-                    let contraint = view.bottomAnchor.constraint(equalTo: bottomAnchor)
-                    contraint.priority =  .defaultHigh
-                    contraint.isActive = true
+                if let prevView = previousView {
+                    view.topAnchor
+                        .constraint(equalTo: prevView.bottomAnchor,
+                                    constant: spacing)
+                        .modify {
+                            $0.priority =  .defaultHigh
+                            $0.isActive = true
+                        }
+                }
+
+                if isLast {
+                    view.bottomAnchor
+                        .constraint(equalTo: bottomAnchor)
+                        .modify {
+                            $0.priority =  .defaultHigh
+                            $0.isActive = true
+                        }
                 }
             }
     }
