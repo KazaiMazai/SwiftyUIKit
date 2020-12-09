@@ -17,7 +17,7 @@ public extension DisclosureView {
 
 public final class DisclosureView: UIView {
     private let isExpanded: () -> Bool
-    private var conditionalContraints: [NSLayoutConstraint] = []
+    private var conditionalContraints: [NSLayoutConstraint]
 
     public init(_ isExpanded: @escaping () -> Bool,
                 axis: ExpandingAxis = .all,
@@ -25,21 +25,21 @@ public final class DisclosureView: UIView {
 
         self.isExpanded = isExpanded
         let contentView = content()
-        let conditionalContraints: [NSLayoutConstraint]
+        let contraints: [NSLayoutConstraint]
 
         switch axis {
         case .horizontal:
-            conditionalContraints = [
+            contraints = [
                 contentView.widthAnchor.constraint(
                     lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         case .vertical:
-            conditionalContraints = [
+            contraints = [
                 contentView.heightAnchor.constraint(
                 lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         case .all:
-            conditionalContraints = [
+            contraints = [
                 contentView.heightAnchor.constraint(
                     lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant),
                 contentView.widthAnchor.constraint(
@@ -47,16 +47,15 @@ public final class DisclosureView: UIView {
             ]
         }
 
+        self.conditionalContraints = contraints
         super.init(frame: .zero)
         add(body: contentView)
 
-        conditionalContraints.forEach {
+        contraints.forEach {
             $0.constant = isExpanded() ? NSLayoutConstraint.defaultLargeConstant : 0
             $0.priority = .defaultHigh
             $0.isActive = true
         }
-
-        self.conditionalContraints = conditionalContraints
     }
 
     public override func updateConstraints() {
@@ -70,6 +69,6 @@ public final class DisclosureView: UIView {
     }
 }
 
-extension NSLayoutConstraint {
+fileprivate extension NSLayoutConstraint {
     static let defaultLargeConstant: CGFloat = 9999
 }
