@@ -34,7 +34,8 @@ public final class DisclosureView: UIView {
                     lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         case .vertical:
-            conditionalContraints = [contentView.heightAnchor.constraint(
+            conditionalContraints = [
+                contentView.heightAnchor.constraint(
                 lessThanOrEqualToConstant: NSLayoutConstraint.defaultLargeConstant)
             ]
         case .all:
