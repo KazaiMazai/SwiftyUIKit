@@ -52,7 +52,7 @@ final class ExampleView: UIView {
 
 ## Reasons
 
-- I love be as close to UIKit API as possible and play with NSLayoutConstraints directly
+- I love to be as close to UIKit API as possible and play with NSLayoutConstraints directly
 - Sometimes NSLayoutConstraints are too verbose especially after SwiftUI experience
 - I'm not a fan of using monster-sized 3rd party libs for building UI layout
 
