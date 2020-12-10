@@ -50,6 +50,18 @@ final class ExampleView: UIView {
 }
 ```
 
+## Reasons
+
+- I love be as close to UIKit API as possible and play with NSLayoutConstraints directly
+- Sometimes NSLayoutConstraints are too verbose especially after SwiftUI experience
+- I'm not a fan of using monster-sized 3rd party libs for building UI layout
+
+##### Here is a SwiftyUIKit consisting of just 3 views, 1 decorator and 1 closure that does all the work!
+
+#### Why not just UIStackView?
+
+What if I want a lightweight layout with views just stacked statically without rearrangement and any other overhead brought by UIStackView?
+
 ## What's inside
 
 ### Views
@@ -78,6 +90,15 @@ UILabel().padding(left: 8,
                   right: 8)
 ```
 
+### Add body:
+
+
+```swift
+func add(body: UIView) 
+```
+
+It just adds body view as subview with its edges anchored to the parent view's edges
+
 ### Modifier sugar
 It's just a closure to make the layout description look more expressive, compact and neat.
 
@@ -89,17 +110,6 @@ Avaiable for
 UIView().modify {
     $0.backgroundColor = .red
 }
-```
-#### NSLayoutConstraints:
-
-```swift
-UIView()
-    .leftAnchor
-    .constraint(equalTo: leftAnchor)
-    .modify {
-        $0.priority = .defaultHigh
-        $0.isActive = true
-    }
 ```
 
 #### NSLayoutConstraints ans NSLayoutAnchors:
