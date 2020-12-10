@@ -49,3 +49,104 @@ final class ExampleView: UIView {
     }
 }
 ```
+
+### What's inside
+
+#### Views
+
+The whole lib consist of just a few guys:
+- HStackView
+- VStackView
+- ZStackView
+
+
+As we have all experienced in SwiftUI it's usually enough for 90% of the layouts. 
+
+#### Paddings Decorator
+
+Decorates view with paddings all over: 
+```swift
+
+UILabel().padding(16)
+
+```
+
+or with specified sides:
+
+```swift 
+UILabel().padding(left: 8,
+                  right: 8)
+```
+
+#### Modifier sugar
+It's just a closure to make the layout description look more expressive, compact and neat.
+
+Avaiable for 
+
+- Views:
+
+```
+UIView().modify {
+    $0.backgroundColor = .red
+}
+```
+- NSLayoutConstraints:
+
+```swift
+UIView()
+    .leftAnchor
+    .constraint(equalTo: leftAnchor)
+    .modify {
+        $0.priority = .defaultHigh
+        $0.isActive = true
+    }
+```
+
+- NSLayoutConstraints ans NSLayoutAnchors:
+
+```swift
+UIView()
+    .leftAnchor
+    .constraint(equalTo: leftAnchor)
+    .modify {
+        $0.priority = .defaultHigh
+        $0.isActive = true
+    }
+```
+- Arrays of all the modifiable guys mentioned above:
+
+```swift
+UIImageView().modify {
+        [$0.heightAnchor, $0.widthAnchor].modify { anchor in
+                anchor.constraint(equalToConstant: 32)
+                      .isActive = true
+    }
+}
+
+```
+
+or
+
+```swift
+[tickerLabel, subtitleLabel].modify {
+    $0.font = veryNiceFont
+}
+
+```
+                   
+
+## Installation
+
+### Swift Package Manager.
+
+SwiftyUIKit is available through Swift Package Manager. 
+To install it, in Xcode 11.0 or later select File > Swift Packages > Add Package Dependency... and add SwiftyUIKit repository URL:
+
+```
+https://github.com/KazaiMazai/SwiftyUIKit
+```
+ 
+
+
+
+
