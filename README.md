@@ -56,7 +56,7 @@ final class ExampleView: UIView {
 - Sometimes NSLayoutConstraints are too verbose especially after SwiftUI experience
 - I'm not a fan of using monster-sized 3rd party libs for building UI layout
 
-So Here is a SwiftyUIKit consisting of just 4 views, 1 decorator and 1 closure that does all the work!
+So here is a SwiftyUIKit consisting of just 4 views, 1 decorator and 1 closure that does all the work!
 
 ### Why not just UIStackView?
 
