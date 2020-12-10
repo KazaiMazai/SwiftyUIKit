@@ -16,15 +16,15 @@ public extension UIView {
                              bottomConstant: all)
     }
 
-    func padding(topConstant: CGFloat = 0,
-                 leftConstant: CGFloat = 0,
-                 rightConstant: CGFloat = 0,
-                 bottomConstant: CGFloat = 0) -> UIView {
+    func padding(top: CGFloat = 0,
+                 left: CGFloat = 0,
+                 right: CGFloat = 0,
+                 bottom: CGFloat = 0) -> UIView {
         PaddingViewDecorator(decorated: self,
-                             topConstant: topConstant,
-                             leftConstant: leftConstant,
-                             rightConstant: rightConstant,
-                             bottomConstant: bottomConstant)
+                             topConstant: top,
+                             leftConstant: left,
+                             rightConstant: right,
+                             bottomConstant: bottom)
     }
 }
 
