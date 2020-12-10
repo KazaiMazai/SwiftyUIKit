@@ -83,14 +83,14 @@ It's just a closure to make the layout description look more expressive, compact
 
 Avaiable for 
 
-- Views:
+#### UIViews:
 
 ```
 UIView().modify {
     $0.backgroundColor = .red
 }
 ```
-- NSLayoutConstraints:
+#### NSLayoutConstraints:
 
 ```swift
 UIView()
@@ -102,7 +102,7 @@ UIView()
     }
 ```
 
-- NSLayoutConstraints ans NSLayoutAnchors:
+#### NSLayoutConstraints ans NSLayoutAnchors:
 
 ```swift
 UIView()
@@ -113,7 +113,7 @@ UIView()
         $0.isActive = true
     }
 ```
-- Arrays of all the modifiable guys mentioned above:
+#### Arrays of all the modifiable guys mentioned above:
 
 ```swift
 UIImageView().modify {
