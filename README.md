@@ -58,7 +58,7 @@ final class ExampleView: UIView {
 
 ##### Here is a SwiftyUIKit consisting of just 3 views, 1 decorator and 1 closure that does all the work!
 
-#### Why not just UIStackView?
+### Why not just UIStackView?
 
 What if I want a lightweight layout with views just stacked statically without rearrangement and any other overhead brought by UIStackView?
 
