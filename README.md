@@ -50,9 +50,9 @@ final class ExampleView: UIView {
 }
 ```
 
-### What's inside
+## What's inside
 
-#### Views
+### Views
 
 The whole lib consist of just a few guys:
 - HStackView
@@ -62,7 +62,7 @@ The whole lib consist of just a few guys:
 
 As we have all experienced in SwiftUI it's usually enough for 90% of the layouts. 
 
-#### Paddings Decorator
+### Paddings Decorator
 
 Decorates view with paddings all over: 
 ```swift
@@ -78,7 +78,7 @@ UILabel().padding(left: 8,
                   right: 8)
 ```
 
-#### Modifier sugar
+### Modifier sugar
 It's just a closure to make the layout description look more expressive, compact and neat.
 
 Avaiable for 
