@@ -40,7 +40,7 @@ final class ExampleView: UIView {
                 .constraint(greaterThanOrEqualToConstant: theme.sizes.avatar)
                 .isActive = true
         }
-        .padding(bottomConstant: theme.paddings.large)
+        .padding(bottom: theme.paddings.large)
     }()
 
     override init(frame: CGRect) {
