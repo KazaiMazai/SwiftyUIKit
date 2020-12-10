@@ -103,8 +103,6 @@ It just adds body view as subview with its edges anchored to the parent view's e
 ### Modifier sugar
 It's just a closure to make the layout description look more expressive, compact and neat.
 
-Avaiable for 
-
 #### UIViews:
 
 ```
