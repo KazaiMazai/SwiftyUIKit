@@ -1,6 +1,6 @@
 # SwiftyUIKit
 
-SwiftyUIKit is a featherweight lib that allows to build an autolayout-powered UIView layout in a clean SwiftUI-style DSL
+SwiftyUIKit is a featherweight lib that allows to build an autolayout-powered UIView layout in a clean SwiftUI-style
 while using pure UIKit API for views configuration and additional layout tweaking.
 
 ```swift
@@ -52,11 +52,11 @@ final class ExampleView: UIView {
 
 ## Reasons
 
-- I love be as close to UIKit API as possible and play with NSLayoutConstraints directly
+- I love to be as close to UIKit API as possible and play with NSLayoutConstraints directly
 - Sometimes NSLayoutConstraints are too verbose especially after SwiftUI experience
 - I'm not a fan of using monster-sized 3rd party libs for building UI layout
 
-##### Here is a SwiftyUIKit consisting of just 4 views, 1 decorator and 1 closure that does all the work!
+So here is a SwiftyUIKit consisting of just 4 views, 1 decorator and 1 closure that does all the work!
 
 ### Why not just UIStackView?
 
@@ -102,8 +102,6 @@ It just adds body view as subview with its edges anchored to the parent view's e
 
 ### Modifier sugar
 It's just a closure to make the layout description look more expressive, compact and neat.
-
-Avaiable for 
 
 #### UIViews:
 
