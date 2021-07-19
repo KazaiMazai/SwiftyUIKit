@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftyUIKit'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'Featherweight lib for building an autolayout-powered UIView layout in a clean SwiftUI-style'
 
 # This description is used to generate tags and improve search results.
