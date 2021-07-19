@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-public protocol Modifiable: class { }
+public protocol Modifiable: AnyObject { }
 
 public extension Modifiable {
     @discardableResult
