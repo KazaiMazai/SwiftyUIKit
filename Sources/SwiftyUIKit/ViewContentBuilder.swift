@@ -7,7 +7,7 @@
 
 import UIKit
 
-@_functionBuilder
+@resultBuilder
 public struct ViewContentBuilder {
     public static func buildBlock(_ subviews: UIView...) -> [UIView] {
         subviews
