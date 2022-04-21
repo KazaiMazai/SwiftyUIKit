@@ -27,20 +27,12 @@ public extension UIView {
                              bottomConstant: bottom)
     }
 
-    func padding(vertical: CGFloat = 0) -> UIView {
+    func padding(vertical: CGFloat = 0, horizontal: CGFloat = 0) -> UIView {
         PaddingViewDecorator(decorated: self,
                              topConstant: vertical,
-                             leftConstant: 0,
-                             rightConstant: 0,
-                             bottomConstant: vertical)
-    }
-
-    func padding(horizontal: CGFloat = 0) -> UIView {
-        PaddingViewDecorator(decorated: self,
-                             topConstant: 0,
                              leftConstant: horizontal,
                              rightConstant: horizontal,
-                             bottomConstant: 0)
+                             bottomConstant: vertical)
     }
 }
 
