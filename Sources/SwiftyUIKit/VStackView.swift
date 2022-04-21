@@ -7,9 +7,13 @@
 
 import UIKit
 
-extension VStackView {
-    public convenience init(spacing: CGFloat = 0, @ViewContentBuilder content: () -> [UIView]) {
+public extension VStackView {
+     convenience init(spacing: CGFloat = 0, @ViewContentBuilder content: () -> [UIView]) {
         self.init(spacing: spacing, content: content())
+    }
+
+    convenience init(spacing: CGFloat = 0, @OptionalViewContentBuilder optionalContent: () -> [UIView]) {
+        self.init(spacing: spacing, content: optionalContent())
     }
 }
 
