@@ -13,3 +13,10 @@ public struct ViewContentBuilder {
         subviews
     }
 }
+
+@resultBuilder
+public struct OptionalViewContentBuilder {
+    public static func buildBlock(_ subviews: UIView?...) -> [UIView] {
+        subviews.compactMap { $0 }
+    }
+}
