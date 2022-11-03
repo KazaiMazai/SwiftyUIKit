@@ -43,7 +43,7 @@ public final class ZStackView: UIView {
             case .bottom:
                 snapSubview($0, flexibleEdges: [.top])
             case .all:
-                snapSubview($0, flexibleEdges: nil)
+                snapSubview($0)
             case .center:
                 snapSubview($0, flexibleEdges: FlexibleEdge.allCases, center: true)
             case .vertical:
