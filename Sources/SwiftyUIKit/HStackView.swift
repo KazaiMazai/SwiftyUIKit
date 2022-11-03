@@ -21,6 +21,7 @@ public final class HStackView: UIView {
     public init(spacing: CGFloat = 0,
                 content: [UIView]) {
         super.init(frame: .zero)
+        var constrains = [NSLayoutConstraint]()
         translatesAutoresizingMaskIntoConstraints = false
         content
             .enumerated()
@@ -31,49 +32,27 @@ public final class HStackView: UIView {
 
                 view.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(view)
-
-                view.topAnchor
-                    .constraint(equalTo: topAnchor)
-                    .modify {
-                        $0.priority = .defaultHigh
-                        $0.isActive = true
-                    }
-
-                view.bottomAnchor
-                    .constraint(equalTo: bottomAnchor)
-                    .modify {
-                        $0.priority = .defaultHigh
-                        $0.isActive = true
-                    }
+                
+                constrains.append(view.topAnchor.constraint(equalTo: topAnchor))
+                constrains.append(view.bottomAnchor.constraint(equalTo: bottomAnchor))
 
                 if isFirst {
-                    view.leadingAnchor
-                        .constraint(equalTo: leadingAnchor)
-                        .modify {
-                            $0.priority = .defaultHigh
-                            $0.isActive = true
-                        }
+                    constrains.append(view.leadingAnchor.constraint(equalTo: leadingAnchor))
                 }
 
                 if let prevView = previousView {
-                    view.leadingAnchor
-                        .constraint(equalTo: prevView.trailingAnchor,
-                                    constant: spacing)
-                        .modify {
-                            $0.priority = .defaultHigh
-                            $0.isActive = true
-                        }
+                    constrains.append(view.leadingAnchor.constraint(
+                        equalTo: prevView.trailingAnchor,
+                        constant: spacing))
                 }
 
                 if isLast {
-                    view.trailingAnchor
-                        .constraint(equalTo: trailingAnchor)
-                        .modify {
-                            $0.priority = .defaultHigh
-                            $0.isActive = true
-                        }
+                    constrains.append(view.trailingAnchor.constraint(equalTo: trailingAnchor))
                 }
             }
+        
+        constrains.forEach { $0.priority = .defaultHigh }
+        NSLayoutConstraint.activate(constrains)
     }
 
     required init?(coder: NSCoder) {

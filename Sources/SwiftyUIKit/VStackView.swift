@@ -21,7 +21,7 @@ public final class VStackView: UIView {
     public init(spacing: CGFloat = 0,
                 content: [UIView]) {
         super.init(frame: .zero)
-
+        var constrains = [NSLayoutConstraint]()
         translatesAutoresizingMaskIntoConstraints = false
         content
             .enumerated()
@@ -32,49 +32,27 @@ public final class VStackView: UIView {
 
                 view.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(view)
-
-                view.leftAnchor
-                    .constraint(equalTo: leftAnchor)
-                    .modify {
-                        $0.priority = .defaultHigh
-                        $0.isActive = true
-                    }
-
-                view.rightAnchor
-                    .constraint(equalTo: rightAnchor)
-                    .modify {
-                        $0.priority = .defaultHigh
-                        $0.isActive = true
-                    }
-
+                
+                constrains.append(view.leftAnchor.constraint(equalTo: leftAnchor))
+                constrains.append(view.rightAnchor.constraint(equalTo: rightAnchor))
+     
                 if isFirst {
-                    view.topAnchor
-                        .constraint(equalTo: topAnchor)
-                        .modify {
-                            $0.priority =  .defaultHigh
-                            $0.isActive = true
-                        }
+                    constrains.append(view.topAnchor.constraint(equalTo: topAnchor))
                 }
 
                 if let prevView = previousView {
-                    view.topAnchor
-                        .constraint(equalTo: prevView.bottomAnchor,
-                                    constant: spacing)
-                        .modify {
-                            $0.priority =  .defaultHigh
-                            $0.isActive = true
-                        }
+                    constrains.append(view.topAnchor.constraint(
+                        equalTo: prevView.bottomAnchor,
+                        constant: spacing))
                 }
 
                 if isLast {
-                    view.bottomAnchor
-                        .constraint(equalTo: bottomAnchor)
-                        .modify {
-                            $0.priority =  .defaultHigh
-                            $0.isActive = true
-                        }
+                    constrains.append(view.bottomAnchor.constraint(equalTo: bottomAnchor))
                 }
             }
+        
+        constrains.forEach { $0.priority = .defaultHigh }
+        NSLayoutConstraint.activate(constrains)
     }
 
     required init?(coder: NSCoder) {
