@@ -15,11 +15,11 @@ public extension UIView {
 
 internal extension UIView {
     enum FlexibleEdge: Int, Equatable, CaseIterable {
-           case top
-           case left
-           case right
-           case bottom
-       }
+        case top
+        case left
+        case right
+        case bottom
+    }
 }
 
 internal extension UIView {

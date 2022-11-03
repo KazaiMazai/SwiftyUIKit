@@ -15,7 +15,6 @@ public extension HStackView {
     convenience init(spacing: CGFloat = 0, @OptionalViewContentBuilder optionalContent: () -> [UIView]) {
         self.init(spacing: spacing, content: optionalContent())
     }
-
 }
 
 public final class HStackView: UIView {
