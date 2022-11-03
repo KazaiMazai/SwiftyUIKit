@@ -21,7 +21,7 @@ public final class VStackView: UIView {
     public init(spacing: CGFloat = 0,
                 content: [UIView]) {
         super.init(frame: .zero)
-        var constrains = [NSLayoutConstraint]()
+        var constraints = [NSLayoutConstraint]()
         translatesAutoresizingMaskIntoConstraints = false
         content
             .enumerated()
@@ -33,26 +33,26 @@ public final class VStackView: UIView {
                 view.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(view)
                 
-                constrains.append(view.leftAnchor.constraint(equalTo: leftAnchor))
-                constrains.append(view.rightAnchor.constraint(equalTo: rightAnchor))
+                constraints.append(view.leftAnchor.constraint(equalTo: leftAnchor))
+                constraints.append(view.rightAnchor.constraint(equalTo: rightAnchor))
      
                 if isFirst {
-                    constrains.append(view.topAnchor.constraint(equalTo: topAnchor))
+                    constraints.append(view.topAnchor.constraint(equalTo: topAnchor))
                 }
 
                 if let prevView {
-                    constrains.append(view.topAnchor.constraint(
+                    constraints.append(view.topAnchor.constraint(
                         equalTo: prevView.bottomAnchor,
                         constant: spacing))
                 }
 
                 if isLast {
-                    constrains.append(view.bottomAnchor.constraint(equalTo: bottomAnchor))
+                    constraints.append(view.bottomAnchor.constraint(equalTo: bottomAnchor))
                 }
             }
         
-        constrains.forEach { $0.priority = .defaultHigh }
-        NSLayoutConstraint.activate(constrains)
+        constraints.forEach { $0.priority = .defaultHigh }
+        NSLayoutConstraint.activate(constraints)
     }
 
     required init?(coder: NSCoder) {
