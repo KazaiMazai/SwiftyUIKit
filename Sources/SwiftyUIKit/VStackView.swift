@@ -28,7 +28,7 @@ public final class VStackView: UIView {
             .forEach { (index, view) in
                 let isFirst = index == 0
                 let isLast = index == content.count - 1
-                let previousView: UIView? = isFirst ? nil : content[index - 1]
+                let prevView: UIView? = isFirst ? nil : content[index - 1]
 
                 view.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(view)
@@ -40,7 +40,7 @@ public final class VStackView: UIView {
                     constrains.append(view.topAnchor.constraint(equalTo: topAnchor))
                 }
 
-                if let prevView = previousView {
+                if let prevView {
                     constrains.append(view.topAnchor.constraint(
                         equalTo: prevView.bottomAnchor,
                         constant: spacing))
