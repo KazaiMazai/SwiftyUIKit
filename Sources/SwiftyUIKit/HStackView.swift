@@ -48,8 +48,8 @@ public final class HStackView: UIView {
                     }
 
                 if isFirst {
-                    view.leftAnchor
-                        .constraint(equalTo: leftAnchor)
+                    view.leadingAnchor
+                        .constraint(equalTo: leadingAnchor)
                         .modify {
                             $0.priority = .defaultHigh
                             $0.isActive = true
@@ -57,8 +57,8 @@ public final class HStackView: UIView {
                 }
 
                 if let prevView = previousView {
-                    view.leftAnchor
-                        .constraint(equalTo: prevView.rightAnchor,
+                    view.leadingAnchor
+                        .constraint(equalTo: prevView.trailingAnchor,
                                     constant: spacing)
                         .modify {
                             $0.priority = .defaultHigh
@@ -67,8 +67,8 @@ public final class HStackView: UIView {
                 }
 
                 if isLast {
-                    view.rightAnchor
-                        .constraint(equalTo: rightAnchor)
+                    view.trailingAnchor
+                        .constraint(equalTo: trailingAnchor)
                         .modify {
                             $0.priority = .defaultHigh
                             $0.isActive = true
