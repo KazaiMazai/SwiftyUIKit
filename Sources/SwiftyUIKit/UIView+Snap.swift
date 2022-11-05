@@ -24,7 +24,7 @@ internal extension UIView {
 
 internal extension UIView {
     func snapSubview(_ subview: UIView,
-                     flexibleEdges edges: [FlexibleEdge] = [],
+                     flexibleEdges: [FlexibleEdge] = [],
                      center: Bool = false) {
         addSubview(subview)
         subview.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,9 @@ internal extension UIView {
                 subview.centerXAnchor.constraint(equalTo: centerXAnchor)
             ])
         }
-
+        
+        let edges = Set(flexibleEdges)
+        
         NSLayoutConstraint.activate([
             edges.contains(.left) ?
                 subview.leftAnchor.constraint(greaterThanOrEqualTo: leftAnchor)
