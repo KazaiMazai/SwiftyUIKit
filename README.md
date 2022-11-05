@@ -142,7 +142,11 @@ or
 }
 
 ```
+
+#### Right-to-left languages
                    
+HStackView supports right-to-left languages by default.
+Use `semanticContentAttribute = .forceLeftToRight` if you want to force direction.
 
 ## Installation
 

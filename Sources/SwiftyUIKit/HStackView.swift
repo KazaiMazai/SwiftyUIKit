@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  HStackView.swift
 //  
 //
 //  Created by Sergey Kazakov on 30.11.2020.
@@ -15,66 +15,44 @@ public extension HStackView {
     convenience init(spacing: CGFloat = 0, @OptionalViewContentBuilder optionalContent: () -> [UIView]) {
         self.init(spacing: spacing, content: optionalContent())
     }
-
 }
 
 public final class HStackView: UIView {
     public init(spacing: CGFloat = 0,
                 content: [UIView]) {
         super.init(frame: .zero)
+        var constraints = [NSLayoutConstraint]()
         translatesAutoresizingMaskIntoConstraints = false
         content
             .enumerated()
             .forEach { (index, view) in
                 let isFirst = index == 0
                 let isLast = index == content.count - 1
-                let previousView: UIView? = isFirst ? nil : content[index - 1]
+                let prevView: UIView? = isFirst ? nil : content[index - 1]
 
                 view.translatesAutoresizingMaskIntoConstraints = false
                 addSubview(view)
-
-                view.topAnchor
-                    .constraint(equalTo: topAnchor)
-                    .modify {
-                        $0.priority = .defaultHigh
-                        $0.isActive = true
-                    }
-
-                view.bottomAnchor
-                    .constraint(equalTo: bottomAnchor)
-                    .modify {
-                        $0.priority = .defaultHigh
-                        $0.isActive = true
-                    }
+                
+                constraints.append(view.topAnchor.constraint(equalTo: topAnchor))
+                constraints.append(view.bottomAnchor.constraint(equalTo: bottomAnchor))
 
                 if isFirst {
-                    view.leftAnchor
-                        .constraint(equalTo: leftAnchor)
-                        .modify {
-                            $0.priority = .defaultHigh
-                            $0.isActive = true
-                        }
+                    constraints.append(view.leadingAnchor.constraint(equalTo: leadingAnchor))
                 }
 
-                if let prevView = previousView {
-                    view.leftAnchor
-                        .constraint(equalTo: prevView.rightAnchor,
-                                    constant: spacing)
-                        .modify {
-                            $0.priority = .defaultHigh
-                            $0.isActive = true
-                        }
+                if let prevView {
+                    constraints.append(view.leadingAnchor.constraint(
+                        equalTo: prevView.trailingAnchor,
+                        constant: spacing))
                 }
 
                 if isLast {
-                    view.rightAnchor
-                        .constraint(equalTo: rightAnchor)
-                        .modify {
-                            $0.priority = .defaultHigh
-                            $0.isActive = true
-                        }
+                    constraints.append(view.trailingAnchor.constraint(equalTo: trailingAnchor))
                 }
             }
+        
+        constraints.forEach { $0.priority = .defaultHigh }
+        NSLayoutConstraint.activate(constraints)
     }
 
     required init?(coder: NSCoder) {

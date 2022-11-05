@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UIView+Snap.swift
 //  
 //
 //  Created by Sergey Kazakov on 30.11.2020.
@@ -15,16 +15,16 @@ public extension UIView {
 
 internal extension UIView {
     enum FlexibleEdge: Int, Equatable, CaseIterable {
-           case top
-           case left
-           case right
-           case bottom
-       }
+        case top
+        case left
+        case right
+        case bottom
+    }
 }
 
 internal extension UIView {
     func snapSubview(_ subview: UIView,
-                     flexibleEdges: [FlexibleEdge]? = nil,
+                     flexibleEdges: [FlexibleEdge] = [],
                      center: Bool = false) {
         addSubview(subview)
         subview.translatesAutoresizingMaskIntoConstraints = false
@@ -35,19 +35,9 @@ internal extension UIView {
                 subview.centerXAnchor.constraint(equalTo: centerXAnchor)
             ])
         }
-
-        guard let flexibleEdges = flexibleEdges else {
-            NSLayoutConstraint.activate([
-                subview.leftAnchor.constraint(equalTo: leftAnchor),
-                subview.rightAnchor.constraint(equalTo: rightAnchor),
-                subview.topAnchor.constraint(equalTo: topAnchor),
-                subview.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
-            return
-        }
-
+        
         let edges = Set(flexibleEdges)
-
+        
         NSLayoutConstraint.activate([
             edges.contains(.left) ?
                 subview.leftAnchor.constraint(greaterThanOrEqualTo: leftAnchor)
