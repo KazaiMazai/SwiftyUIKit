@@ -8,12 +8,8 @@
 import UIKit
 
 public extension ZStackView {
-     convenience init(alignment: Alignment = .all, @ViewContentBuilder content: () -> [UIView]) {
-        self.init(alignment: alignment, content: content())
-    }
-
-    convenience init(alignment: Alignment = .all, @OptionalViewContentBuilder optionalContent: () -> [UIView]) {
-        self.init(alignment: alignment, content: optionalContent())
+    convenience init(alignment: Alignment = .all, @ViewContentBuilder _ contentBuilder: () -> [UIView]) {
+        self.init(alignment: alignment, content: contentBuilder())
     }
 }
 

@@ -8,12 +8,8 @@
 import UIKit
 
 public extension HStackView {
-    convenience init(spacing: CGFloat = 0, @ViewContentBuilder content: () -> [UIView]) {
-        self.init(spacing: spacing, content: content())
-    }
-
-    convenience init(spacing: CGFloat = 0, @OptionalViewContentBuilder optionalContent: () -> [UIView]) {
-        self.init(spacing: spacing, content: optionalContent())
+    convenience init(spacing: CGFloat = 0, @ViewContentBuilder contentBuilder: () -> [UIView]) {
+        self.init(spacing: spacing, content: contentBuilder())
     }
 }
 
